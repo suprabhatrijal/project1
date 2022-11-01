@@ -44,6 +44,18 @@ li $t1, 1
 # if char >= 48 and char < 58
 beq $t0, $t1, Number
 
+# character falls in the range  'a' to 'y'
+
+# char < 97
+slti $t0, $s4, 97 
+
+# not (char < 97)  ===> ( char  >= 97)
+nor $t0, $t0, $zero
+
+# char < 123
+slti $t1, $s4, 122
+
+and $t0, $t0, $t1
 Number:
 addi $s4, $s4, -48
 add $s3, $s3, $s4 
