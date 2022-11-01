@@ -72,6 +72,10 @@ nor $t0, $t0, $zero
 slti $t1, $s4, 90
 
 and $t0, $t0, $t1
+# if char >= 65 and char < 90
+beq $t0, $t1, Upper
+
+j loopCOTD
 
 Number:
 addi $s4, $s4, -48
@@ -81,6 +85,13 @@ j loopCOTD
 
 Lower:
 addi $s4, $s4, -87
+add $s3, $s3, $s4 
+
+j loopCOTD
+
+
+Upper:
+addi $s4, $s4, -55
 add $s3, $s3, $s4 
 
 j loopCOTD
