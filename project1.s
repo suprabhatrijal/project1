@@ -1,21 +1,26 @@
 .data
 input: .space 11
 prompt: .asciiz "Enter 10 characters: "
-nl: space "\n"
+nl: .asciiz "\n"
 .text
 main:
+# Program should convert a certain base into decimal
+
+# print the prompt 
+li $v0, 4
+la $a0, prompt
+syscall
+
 # Get the user input
 li $v0, 8
 la $a0, input
 li $a1, 11
 syscall
 
-
 # print new line
 li $v0, 4
 la $a0, nl
 syscall
-
 
 # initialize the loop
 li $s0, 0 # counter variable
@@ -72,6 +77,7 @@ nor $t0, $t0, $zero
 slti $t1, $s4, 90
 
 and $t0, $t0, $t1
+li $t1, 1
 # if char >= 65 and char < 90
 beq $t0, $t1, Upper
 
@@ -94,6 +100,7 @@ addi $s4, $s4, -55
 add $s3, $s3, $s4 
 
 j loopCOTD
+
 
 loopCOTD:
 # set the register t2 to point at the next character
