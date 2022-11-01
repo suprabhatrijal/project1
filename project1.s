@@ -89,14 +89,20 @@ add $s3, $s3, $s4
 
 j loopCOTD
 
-
 Upper:
 addi $s4, $s4, -55
 add $s3, $s3, $s4 
 
 j loopCOTD
 
-loopCOTD
+loopCOTD:
+# set the register t2 to point at the next character
+addi $s2, 1
+
+# increment the counter variable
+addi $s0, $s0, 1
+bne $s0, $s1 loop 
+
 # exit
 li $v0, 10
 syscall
