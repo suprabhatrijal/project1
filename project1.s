@@ -103,6 +103,17 @@ addi $s2, 1
 addi $s0, $s0, 1
 bne $s0, $s1 loop 
 
+# Multiply by (N-1)
+li $s4, 10
+mult $s3, $s4
+
+mflo $s3
+
+# Print the final output
+li $v0, 1
+addi $a0, $s3, 0
+syscall
+
 # exit
 li $v0, 10
 syscall
