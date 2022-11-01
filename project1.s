@@ -60,6 +60,19 @@ li $t1, 1
 # if char >= 97 and char < 123
 beq $t0, $t1, Lower
 
+# character falls in the range  'A' to 'Y'
+
+# char < 65
+slti $t0, $s4, 65 
+
+# not (char < 65)  ===> ( char >= 65)
+nor $t0, $t0, $zero
+
+# char < 90
+slti $t1, $s4, 90
+
+and $t0, $t0, $t1
+
 Number:
 addi $s4, $s4, -48
 add $s3, $s3, $s4 
