@@ -40,7 +40,17 @@ nor $t0, $t0, $zero
 slti $t1, $s4, 58
 
 and $t0, $t0, $t1
+li $t1, 1
+# if char >= 48 and char < 58
+beq $t0, $t1, Number
 
+Number:
+addi $s4, $s4, -48
+add $s3, $s3, $s4 
+
+j loopCOTD
+
+loopCOTD
 # exit
 li $v0, 10
 syscall
