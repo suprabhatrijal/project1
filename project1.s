@@ -110,7 +110,7 @@ addi $s2, 1
 addi $s0, $s0, 1
 bne $s0, $s1 loop 
 
-# Multiply by (N-1)
+# Multiply by (N-25)
 li $s4, 10
 mult $s3, $s4
 
