@@ -1,15 +1,8 @@
 .data
 input: .space 11
-prompt: .asciiz "Enter 10 characters: "
-nl: .asciiz "\n"
 .text
 main:
 # Program should convert a certain base into decimal
-
-# print the prompt 
-li $v0, 4
-la $a0, prompt
-syscall
 
 # Get the user input
 li $v0, 8
@@ -18,8 +11,8 @@ li $a1, 11
 syscall
 
 # print new line
-li $v0, 4
-la $a0, nl
+li $v0, 11
+la $a0, 10
 syscall
 
 # initialize the loop
