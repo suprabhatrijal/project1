@@ -56,8 +56,18 @@ nor $t0, $t0, $zero
 slti $t1, $s4, 122
 
 and $t0, $t0, $t1
+li $t1, 1
+# if char >= 97 and char < 123
+beq $t0, $t1, Lower
+
 Number:
 addi $s4, $s4, -48
+add $s3, $s3, $s4 
+
+j loopCOTD
+
+Lower:
+addi $s4, $s4, -87
 add $s3, $s3, $s4 
 
 j loopCOTD
